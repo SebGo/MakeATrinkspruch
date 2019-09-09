@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MakeATrinkspruch.Views.ToastPage"
+             Title="Make A Trinkspruch">
+    <StackLayout Margin="20">
+        <Label Text="{Binding ToastText}" x:Name="ToastTextLabel" 
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               HorizontalOptions="Center"
+               VerticalOptions="FillAndExpand"/>
+        <Button Text="Neuer Trinkspruch" Clicked="OnGetNewToast" Padding="32"/>
+        <Button Text="Aufsagen lassen" Clicked="OnSpeakClicked" Padding="32"/>
+    </StackLayout>
+</ContentPage>
