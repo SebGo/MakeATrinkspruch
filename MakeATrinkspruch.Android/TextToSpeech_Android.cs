@@ -1,15 +1,16 @@
 ﻿using Android.Speech.Tts;
 using Java.Lang;
-using MakeATrinkspruch;
+using MakeATrinkspruch.Droid;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(TextToSpeech_Android))]
-namespace MakeATrinkspruch
+
+namespace MakeATrinkspruch.Droid
 {
     public class TextToSpeech_Android : Object, ITextToSpeech, TextToSpeech.IOnInitListener
     {
-        TextToSpeech speaker;
-        string toSpeak;
+        private TextToSpeech speaker;
+        private string toSpeak;
 
         public void Speak(string text)
         {
@@ -25,7 +26,6 @@ namespace MakeATrinkspruch
             }
         }
 
-        #region IOnInitListener implementation
         public void OnInit(OperationResult status)
         {
             if (status.Equals(OperationResult.Success))
@@ -33,6 +33,5 @@ namespace MakeATrinkspruch
                 speaker.Speak(toSpeak, QueueMode.Flush, null, null);
             }
         }
-        #endregion
     }
 }

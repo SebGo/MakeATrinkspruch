@@ -3,22 +3,21 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace MakeATrinkspruch.Data
 {
-
-    public class ToastDatabase
+    public class DbService
     {
-        readonly SQLiteAsyncConnection database;
+        private readonly SQLiteAsyncConnection dbConnection;
 
         private int totalAmount;
-        Random random;
+        private Random random;
 
-
-        public ToastDatabase(string dbPath)
+        public DbService()
         {
-            database = new SQLiteAsyncConnection(dbPath);
-            database.CreateTableAsync<Toast>().Wait();
+            dbConnection = DependencyService.Get<IDatabase>().CreateConnection();
+            dbConnection.CreateTableAsync<Toast>().Wait();
 
             totalAmount = GetItemsAsync().Result.Count;
             random = new Random();
@@ -26,13 +25,13 @@ namespace MakeATrinkspruch.Data
 
         public Task<List<Toast>> GetItemsAsync()
         {
-            var res = database.Table<Toast>().ToListAsync();
+            var res = dbConnection.Table<Toast>().ToListAsync();
             return res;
         }
 
         public Task<Toast> GetItemAsync(int id)
         {
-            var res = database.Table<Toast>().Where(i => i.Id == id).FirstOrDefaultAsync();
+            var res = dbConnection.Table<Toast>().Where(i => i.Id == id).FirstOrDefaultAsync();
             return res;
         }
 
@@ -40,11 +39,11 @@ namespace MakeATrinkspruch.Data
         {
             if (item.Id != 0)
             {
-                return database.UpdateAsync(item);
+                return dbConnection.UpdateAsync(item);
             }
             else
             {
-                return database.InsertAsync(item);
+                return dbConnection.InsertAsync(item);
             }
         }
 
@@ -55,16 +54,13 @@ namespace MakeATrinkspruch.Data
             {
                 newId = random.Next(1, totalAmount);
             } while (newId == toast.Id);
-            Task<Toast> res = database.Table<Toast>().Where(i => i.Id == newId).FirstOrDefaultAsync();
+            Task<Toast> res = dbConnection.Table<Toast>().Where(i => i.Id == newId).FirstOrDefaultAsync();
             return res;
         }
 
         public Task<int> DeleteItemAsync(Toast item)
         {
-            return database.DeleteAsync(item);
+            return dbConnection.DeleteAsync(item);
         }
     }
-
-
-
 }
