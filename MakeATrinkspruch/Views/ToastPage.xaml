@@ -1,15 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MakeATrinkspruch.ViewModels"
              x:Class="MakeATrinkspruch.Views.ToastPage"
-             Title="Make A Trinkspruch">
-    <StackLayout Margin="20">
-        <Label Text="{Binding ToastText}" x:Name="ToastTextLabel" 
-               VerticalTextAlignment="Center"
-               HorizontalTextAlignment="Center"
-               HorizontalOptions="Center"
-               VerticalOptions="FillAndExpand"/>
-        <Button Text="Neuer Trinkspruch" Clicked="OnGetNewToast" Padding="32"/>
-        <Button Text="Aufsagen lassen" Clicked="OnSpeakClicked" Padding="32"/>
-    </StackLayout>
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:ToastViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding FilterCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource MaterialFontFamily}"
+                                 Glyph="{StaticResource FilterIcon}"
+                                 Size="Large" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+
+        <ToolbarItem Order="Secondary"
+                     Command="{Binding AboutCommand}"
+                     Text="Infos zur App"
+                     Priority="2">
+        </ToolbarItem>
+        <ToolbarItem Order="Secondary"
+                     Command="{Binding BuyABeerCommand}"
+                     Text="Spendier ein Bier"
+                     Priority="3">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+
+        <StackLayout Spacing="10"
+                     Padding="5"
+                     AbsoluteLayout.LayoutFlags="All"
+                     AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Left"
+                                        Command="{Binding SwipeCommand}"
+                                        CommandParameter="Left" />
+            </StackLayout.GestureRecognizers>
+
+            <Label Text="{Binding CurrentToast.ToastText}"
+                   Padding="16,60, 16, 0"
+                   x:Name="ToastTextLabel"
+                   VerticalTextAlignment="Start"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   FontSize="20"
+                   LineHeight="1.2"
+                   VerticalOptions="FillAndExpand" />
+        </StackLayout>
+
+        <Button Text="{StaticResource ReadIcon}"
+                Command="{Binding ReadCommand}"
+                Margin="0,0,24,24"
+                FontFamily="{StaticResource MaterialFontFamily}"
+                FontSize="Large"
+                WidthRequest="64"
+                HeightRequest="64"
+                CornerRadius="32"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize" />
+    </AbsoluteLayout>
 </ContentPage>

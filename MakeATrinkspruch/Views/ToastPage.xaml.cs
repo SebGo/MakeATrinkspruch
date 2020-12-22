@@ -1,5 +1,5 @@
-﻿using MakeATrinkspruch.Models;
-using System;
+﻿using MakeATrinkspruch.ViewModels;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,24 +8,27 @@ namespace MakeATrinkspruch.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ToastPage : ContentPage
     {
-        private Toast currentToast;
+        private readonly ToastViewModel VM;
 
         public ToastPage()
         {
             InitializeComponent();
-            currentToast = App.Database.GetNewToastAsync(new Toast() { Id = 0, ToastText = "" }).Result;
-            ToastTextLabel.Text = currentToast.ToastText;
+            VM = new ToastViewModel();
+            BindingContext = VM;
         }
 
-        async void OnGetNewToast(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            currentToast = await App.Database.GetNewToastAsync(currentToast);
-            ToastTextLabel.Text = currentToast.ToastText;
-        }
+            base.OnAppearing();
+            if (VM.CurrentToast == null)
+            {
+                VM.GetRandomToastCommand.Execute(null);
+            }
 
-        void OnSpeakClicked(object sender, EventArgs e)
-        {
-            DependencyService.Get<ITextToSpeech>().Speak(currentToast.ToastText);
+            if (VM.Keywords == null || !VM.Keywords.Any())
+            {
+                VM.LoadKeywordsCommand.Execute(null);
+            }
         }
     }
 }

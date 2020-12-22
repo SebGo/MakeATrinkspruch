@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.MakeATrinkspruch" android:installLocation="auto">
-  <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="28" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <application android:label="MakeATrinkspruch" android:theme="@style/MainTheme" android:icon="@mipmap/icon"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="2" android:versionName="Sternquell" package="com.MakeATrinkspruch" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="28" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<application android:label="MakeATrinkspruch" android:theme="@style/MainTheme"></application>
 </manifest>

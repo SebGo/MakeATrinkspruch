@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MakeATrinkspruch.ViewModels"
+             xmlns:local="clr-namespace:MakeATrinkspruch.Container"
+             x:Class="MakeATrinkspruch.Views.AboutPage"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Margin="15,0"
+                  ColumnSpacing="15"
+                  RowSpacing="15">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2"
+                       Margin="32"
+                       HeightRequest="100"
+                       Source="splash_logo.png" />
+
+                <Label  Grid.Row="1"
+                        Grid.Column="0"
+                        FontSize="32"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{StaticResource CurlyBracesIcon}"
+                        FontFamily="{StaticResource MaterialFontFamily}"></Label>
+                <StackLayout Grid.Row="1"
+                             Grid.Column="1">
+                    <Label Text="Autor"></Label>
+                    <Label Text="Sebastian Gottwald"></Label>
+                </StackLayout>
+
+                <Label  Grid.Row="2"
+                        Grid.Column="0"
+                        FontSize="32"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{StaticResource InfoIcon}"
+                        FontFamily="{StaticResource MaterialFontFamily}"></Label>
+                <StackLayout Grid.Row="2"
+                             Grid.Column="1">
+                    <Label Text="Versionsname"></Label>
+                    <Label Text="Sternquell"></Label>
+                </StackLayout>
+
+                <Label Grid.Row="3"
+                       Grid.Column="0"
+                       FontSize="32"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Text="{StaticResource LicenseIcon}"
+                       FontFamily="{StaticResource MaterialFontFamily}"></Label>
+                <StackLayout Grid.Row="3"
+                             Grid.Column="1">
+                    <Label Text="Lizenz"></Label>
+                    <Label Text="GPLv3"></Label>
+                </StackLayout>
+
+                <Label Grid.Row="4"
+                       Grid.Column="0"
+                       FontSize="32"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Text="{StaticResource GitHubIcon}"
+                       FontFamily="{StaticResource MaterialFontFamily}"></Label>
+                <StackLayout Grid.Row="4"
+                             Grid.Column="1">
+                    <Label Text="Quelle"></Label>
+                    <local:HyperlinkLabel Text="Github:SebGo"
+                                          Url="https://github.com/SebGo/MakeATrinkspruch" />
+                </StackLayout>
+
+                <Label Grid.Row="5"
+                       Grid.Column="0"
+                       FontSize="32"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Text="{StaticResource BeerMug}"
+                       FontFamily="{StaticResource MaterialFontFamily}"></Label>
+                <StackLayout Grid.Row="5"
+                             Grid.Column="1">
+                    <Label Text="Spendier mir ein Bier"></Label>
+                    <local:HyperlinkLabel Text="https://paypal.me/MakeATrinkspruch"
+                                          Url="https://paypal.me/MakeATrinkspruch" />
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

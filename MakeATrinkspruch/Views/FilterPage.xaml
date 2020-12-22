@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MakeATrinkspruch.ViewModels"
+             x:Class="MakeATrinkspruch.Views.FilterPage"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:FilterViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="{StaticResource CloseIcon}"
+                    Margin="0,15,15,0"
+                    WidthRequest="48"
+                    HeightRequest="48"
+                    CornerRadius="24"
+                    HorizontalOptions="End"
+                    FontSize="Large"
+                    BackgroundColor="Transparent"
+                    Command="{Binding CloseCommand}"
+                    FontFamily="{StaticResource MaterialFontFamily}" />
+            <ScrollView>
+                <ListView Margin="20"
+                          x:Name="listView"
+                          ItemsSource="{Binding DataSource}"
+                          SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label Text="{Binding Data.Name}"
+                                               VerticalOptions="Center" />
+                                    </StackLayout>
+                                    <CheckBox IsChecked="{Binding IsChecked}"
+                                              Grid.Column="1" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Footer>
+                        <Button Text="FILTER ANWENDEN"
+                                Command="{Binding SetFilterCommand}" />
+                    </ListView.Footer>
+                </ListView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

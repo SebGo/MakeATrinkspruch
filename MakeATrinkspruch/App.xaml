@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Application  xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="MakeATrinkspruch.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Colors -->
+            <Color x:Key="Primary">#2c885a</Color>
+            <Color x:Key="PrimaryDark">#206141</Color>
+            <Color x:Key="Accent">#fbbf44</Color>
+            <Color x:Key="Warn">#dd5047</Color>
+            <Color x:Key="WarnDark">#bb1a28</Color>
+
+            <!-- Icons -->
+            <OnPlatform x:Key="MaterialFontFamily"
+                        x:TypeArguments="x:String">
+                <On Platform="Android"
+                    Value="materialdesignicons-webfont.ttf#Material Design Icons" />
+            </OnPlatform>
+            <x:String  x:Key="FilterIcon">&#xF0232;</x:String>
+            <x:String  x:Key="CurlyBracesIcon">&#xF0169;</x:String>
+            <x:String  x:Key="CloseIcon">&#xF0156;</x:String>
+            <x:String  x:Key="LicenseIcon">&#xF0124;</x:String>
+            <x:String  x:Key="InfoIcon">&#xF02FC;</x:String>
+            <x:String  x:Key="GitHubIcon">&#xF02A4;</x:String>
+            <x:String  x:Key="ReadIcon">&#xF05CB;</x:String>
+            <x:String  x:Key="BeerMug">&#xF1116;</x:String>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
