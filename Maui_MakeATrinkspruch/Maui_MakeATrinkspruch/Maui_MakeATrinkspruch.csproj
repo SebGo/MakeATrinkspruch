@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <SingleProject>true</SingleProject>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseMaui>true</UseMaui>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Images -->
+    <MauiImage Include="Resources\Images\*" />
+
+    <!-- Custom Fonts -->
+    <MauiFont Include="Resources\Fonts\*" />
+
+    <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+    <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+
+    <!-- Splash-Screen-->
+    <MauiSplashScreen Include="Resources\Splash\splashscreen.svg" Resize="True" BaseSize="400,400" Color="#2c885a" />
+
+    <!--App-Icon-->
+    <MauiIcon Include="Resources\Images\logo.svg" BaseSize="128,128" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.40" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.40" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" />
+  </ItemGroup>
+</Project>
