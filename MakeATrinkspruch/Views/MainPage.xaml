@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MakeATrinkspruch.ViewModels"
+             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+             x:Class="MakeATrinkspruch.Views.MainPage">
+
+
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding FilterCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource MaterialFontFamily}"
+                                 Glyph="{StaticResource FilterIcon}"
+                                 Size="Large"
+                                 Color="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource White}}">
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+
+        <ToolbarItem Command="{Binding AboutCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource MaterialFontFamily}"
+                                 Glyph="{StaticResource InfoIcon}"
+                                 Size="Large"
+                                 Color="{AppThemeBinding Light={DynamicResource Gray950}, Dark={DynamicResource White}}">
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+
+
+
+        <StackLayout Spacing="10"
+                     Padding="5"
+                     AbsoluteLayout.LayoutFlags="All"
+                     AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Left"
+                                        Command="{Binding SwipeCommand}"
+                                        CommandParameter="Left" />
+            </StackLayout.GestureRecognizers>
+
+
+            <Label Text="{Binding CurrentToast.ToastText}"
+                   Padding="16,60, 16, 0"
+                   x:Name="ToastTextLabel"
+                   VerticalTextAlignment="Start"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   FontSize="Large"
+                   LineHeight="1.2"
+                   VerticalOptions="FillAndExpand" />
+        </StackLayout>
+
+        <Button Text="{StaticResource ReadIcon}"
+                Command="{Binding ReadCommand}"
+                Margin="0,0,24,24"
+                FontFamily="{StaticResource MaterialFontFamily}"
+                FontSize="Large"
+                WidthRequest="64"
+                HeightRequest="64"
+                CornerRadius="32"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize" />
+    </AbsoluteLayout>
+</ContentPage>

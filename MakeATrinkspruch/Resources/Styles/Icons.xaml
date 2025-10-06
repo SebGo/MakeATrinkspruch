@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+					xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+					>
+	<OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+		<On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
+	</OnPlatform>
+	<x:String x:Key="FilterIcon">&#xF0232;</x:String>
+	<x:String x:Key="CurlyBracesIcon">&#xF0169;</x:String>
+	<x:String x:Key="CloseIcon">&#xF0156;</x:String>
+	<x:String x:Key="LicenseIcon">&#xF0124;</x:String>
+	<x:String x:Key="InfoIcon">&#xF02FC;</x:String>
+	<x:String x:Key="GitHubIcon">&#xF02A4;</x:String>
+	<x:String x:Key="ReadIcon">&#xF05CB;</x:String>
+	<x:String x:Key="BeerMug">&#xF1116;</x:String>
+</ResourceDictionary>
